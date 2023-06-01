@@ -24,6 +24,7 @@ public class ProveedorController {
     @GetMapping
     public ResponseEntity<List<Proveedor>> getAll(){
         List<Proveedor> proveedores = proveedorService.getAll();
+        System.out.println(proveedores);
         if(proveedores.isEmpty())
             return ResponseEntity.noContent().build();
         return ResponseEntity.ok(proveedores);
@@ -37,7 +38,4 @@ public class ProveedorController {
         return ResponseEntity.ok(proveedor);
     }
 
-    // Update
-
-    // Delete
 }

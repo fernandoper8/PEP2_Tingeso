@@ -1,0 +1,2 @@
+INSERT INTO proveedor(codigo, categoria, nombre, retencion) VALUES ('1003', 'A', 'Armin van Buuren', 'Si');
+INSERT INTO proveedor(codigo, categoria, nombre, retencion) VALUES ('2001', 'B', 'Oliver Heldens', 'No');

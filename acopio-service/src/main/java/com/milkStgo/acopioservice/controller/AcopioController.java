@@ -28,4 +28,17 @@ public class AcopioController {
             return ResponseEntity.noContent().build();
         return ResponseEntity.ok(acopios);
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<List<Acopio>> getAcopioPorProveedor(@PathVariable("id") String idProveedor){
+        List<Acopio> acopios = acopioService.obtenerAcopiosPorProveedor(idProveedor);
+        if(acopios.isEmpty())
+            return ResponseEntity.noContent().build();
+        return ResponseEntity.ok(acopios);
+    }
+
+    // Delete
+    @DeleteMapping
+    public void deteleAcopios(){
+        acopioService.eliminarAcopios();
+    }
 }

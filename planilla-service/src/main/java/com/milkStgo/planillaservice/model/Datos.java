@@ -1,4 +1,4 @@
-package com.milkStgo.planillaservice.models;
+package com.milkStgo.planillaservice.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

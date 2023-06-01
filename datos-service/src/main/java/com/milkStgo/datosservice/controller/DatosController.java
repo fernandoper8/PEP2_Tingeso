@@ -29,4 +29,17 @@ public class DatosController {
             return ResponseEntity.noContent().build();
         return ResponseEntity.ok(datos);
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<Datos> getById(@PathVariable("id") String idProveedor){
+        Datos datos = datosService.obtenerDataPorProveedor(idProveedor);
+        if(datos == null)
+            return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(datos);
+    }
+
+    // Delete
+    @DeleteMapping
+    public void deleteDatos(){
+        datosService.eliminarDatos();
+    }
 }
