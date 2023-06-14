@@ -14,6 +14,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -52,31 +53,34 @@ public class PlanillaService {
         return planillaRepository.findById(id).orElse(null);
     }
 
+
+
     // Hacer los metodos get para traer proveedores, acopios (por proveedor) y datos (por proveedor) :)
     // Para proveedores
     public List<Proveedor> getAllProveedores(){
-        List<Proveedor> proveedores = restTemplate.exchange("http://localhost:8002/proveedor", HttpMethod.GET,
-                null, new ParameterizedTypeReference<List<Proveedor>>(){})
+        List<Proveedor> proveedores = restTemplate.exchange("http://proveedor-service/proveedor", HttpMethod.GET,
+                null, new ParameterizedTypeReference<List<Proveedor>>() {})
                 .getBody();
+        System.out.println("LOCURA: " + proveedores);
         return proveedores;
     }
     // Para acopios
     public List<Acopio> getAcopiosPorIdProveedor(String idProveedor){
-        List<Acopio> acopios = restTemplate.exchange("http://localhost:8001/acopio/" + idProveedor, HttpMethod.GET,
+        List<Acopio> acopios = restTemplate.exchange("http://acopio-service/acopio/" + idProveedor, HttpMethod.GET,
                 null, new ParameterizedTypeReference<List<Acopio>>(){})
                 .getBody();
         return acopios;
     }
     public void eliminarAcopios(){
-        restTemplate.delete("http://localhost:8001/acopio");
+        restTemplate.delete("http://acopio-service/acopio");
     }
     // Para datos
     public Datos getDatosPorIdProveedor(String idProveedor){
-        Datos datos = restTemplate.getForObject("http://localhost:8003/datos/" + idProveedor, Datos.class);
+        Datos datos = restTemplate.getForObject("http://datos-service/datos/" + idProveedor, Datos.class);
         return datos;
     }
     public void eliminarDatos(){
-        restTemplate.delete("http://localhost:8003/datos");
+        restTemplate.delete("http://datos-service/datos");
     }
 
     @Generated
