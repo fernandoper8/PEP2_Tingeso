@@ -5,6 +5,8 @@ import com.milkStgo.acopioservice.service.AcopioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -19,6 +21,12 @@ public class AcopioController {
     public ResponseEntity<Acopio> save(@RequestBody Acopio acopio){
         Acopio newAcopio = acopioService.save(acopio);
         return ResponseEntity.ok(newAcopio);    //
+    }
+    @PostMapping("/subir")
+    public String addAcopio(@RequestParam("file") MultipartFile file){
+        acopioService.guardar(file);
+        acopioService.leerCsv("Acopio.csv");
+        return "cargado";
     }
     // Read
     @GetMapping

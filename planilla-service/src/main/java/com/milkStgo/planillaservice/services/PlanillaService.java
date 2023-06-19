@@ -72,7 +72,8 @@ public class PlanillaService {
         return acopios;
     }
     public void eliminarAcopios(){
-        restTemplate.delete("http://acopio-service/acopio");
+        //restTemplate.delete("http://acopio-service/acopio");
+        restTemplate.exchange("http://acopio-service/acopio", HttpMethod.DELETE, null, String.class);
     }
     // Para datos
     public Datos getDatosPorIdProveedor(String idProveedor){
@@ -80,7 +81,8 @@ public class PlanillaService {
         return datos;
     }
     public void eliminarDatos(){
-        restTemplate.delete("http://datos-service/datos");
+        //restTemplate.delete("http://datos-service/datos");
+        restTemplate.exchange("http://datos-service/datos", HttpMethod.DELETE, null, String.class);
     }
 
     @Generated

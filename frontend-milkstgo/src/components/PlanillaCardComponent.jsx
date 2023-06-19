@@ -3,87 +3,110 @@ import styled from 'styled-components';
 
 export default class PlanillaComponent extends Component {
     render() {
+
+        const planilla = this.props.planilla;
+        
         return (
-            <Card>
-                <ProveedorInfo>
-                    <ProveedorInfoCard>
-                        <Nombre>
-                            <h1>Armin van Buuren</h1>    
-                        </Nombre>
-                        <h2>Codigo</h2>
-                        <h3>Fecha del pago</h3>
-                    </ProveedorInfoCard>
-                </ProveedorInfo>
+            <Main>
+                <Card>
+                    <ProveedorInfo>
+                        <ProveedorInfoCard>
+                            <Nombre>
+                                <h1>{planilla.nombre}</h1>
+                            </Nombre>
+                            <h2>Codigo: {planilla.codigo}</h2>
+                            <h3>Fecha del pago: {planilla.fecha}</h3>
+                        </ProveedorInfoCard>
+                    </ProveedorInfo>
 
-                <EntregaInfo>
-                    <Table>
-                        <thead>
-                            <tr>
-                                <th>KG de Leche</th>
-                                <th>Frecuencia de Entregas</th>
-                                <th>Promedio Diario de KG</th>
-                                <th>Bonificacion por Frecuiencia</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>200</td>
-                                <td>4</td>
-                                <td>50</td>
-                                <td>0</td>
-                            </tr>
-                        </tbody>
-                    </Table>
-                </EntregaInfo>
+                    <EntregaInfo>
+                        <Table>
+                            <thead>
+                                <tr>
+                                    <th>KG de Leche</th>
+                                    <th>Frecuencia de Entregas</th>
+                                    <th>Promedio Diario de KG</th>
+                                    <th>Bonificacion por Frecuiencia</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{planilla.totalKlsLeche}</td>
+                                    <td>{planilla.frecuencia}</td>
+                                    <td>{planilla.promedioDiarioKls}</td>
+                                    <td>{planilla.bonoFrecuencia}</td>
+                                </tr>
+                            </tbody>
+                        </Table>
+                    </EntregaInfo>
 
-                <PorcentajesInfo>
-                    <Table>
-                        <thead>
-                            <tr>
-                                <th>% Var. Leche</th>
-                                <th>Descuento var. Leche</th>
-                                <th>% Grasa</th>
-                                <th>Descuento var. Grasa</th>
-                                <th>% ST</th>
-                                <th>Descuento var. ST</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>35</td>
-                                <td>0</td>
-                                <td>8</td>
-                                <td>0</td>
-                            </tr>
-                        </tbody>
-                    </Table>
-                </PorcentajesInfo>
+                    <PorcentajesInfo>
+                        <Table>
+                            <thead>
+                                <tr>
+                                    <th>% Var. Leche</th>
+                                    <th>Descuento var. Leche</th>
+                                    <th>% Grasa</th>
+                                    <th>% Var. Grasa</th>
+                                    <th>Descuento var. Grasa</th>
+                                    <th>% ST</th>
+                                    <th>% Var. ST</th>
+                                    <th>Descuento var. ST</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{planilla.porVariacionLeche}</td>
+                                    <td>{planilla.dctoVariacionLeche}</td>
+                                    <td>{planilla.porGrasa}</td>
+                                    <td>{planilla.porVariacionGrasa}</td>
+                                    <td>{planilla.dctoVariacionGrasa}</td>
+                                    <td>{planilla.porSolidos}</td>
+                                    <td>{planilla.porVariacionSolidos}</td>
+                                    <td>{planilla.dctoVariacionSolidos}</td>
+                                </tr>
+                            </tbody>
+                        </Table>
+                    </PorcentajesInfo>
 
-                <PagosInfo>
-                    <Table>
-                        <thead>
-                            <tr>
-                                <th>Monto Retenido</th>
-                                <th>Pago Total</th>
-                                <th>Pago Final</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>0</td>
-                                <td>200000</td>
-                                <td>200000</td>
-                            </tr>
-                        </tbody>
-                    </Table>
-                </PagosInfo>
+                    <PagosInfo>
+                        <Table>
+                            <thead>
+                                <tr>
+                                    <th>Monto Retenido</th>
+                                    <th>Pago Total</th>
+                                    <th>Pago Final</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{planilla.montoRetencion}</td>
+                                    <td>{planilla.pagoTotal}</td>
+                                    <td>{planilla.pagoFinal}</td>
+                                </tr>
+                            </tbody>
+                        </Table>
+                    </PagosInfo>
+                </Card>
+            </Main>
 
-            </Card>
         );
     }
 }
+
+const Main = styled.div`
+    margin-top: 100px;
+    margin-bottom: 100px;
+
+    width: 100%;
+    height: 100%;
+
+    position: relative;
+    top: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`
 
 const Card = styled.div`
     display: grid;
@@ -96,7 +119,7 @@ const Card = styled.div`
     border-radius: 40px;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
 
-    margin-top: 100px;
+    margin-top: -70px;
     width: 80%;
 
 `
@@ -170,19 +193,25 @@ const PorcentajesInfo = styled.div`
         width: 50px;
     }
     &>Table>thead>tr>th:nth-child(2){
-        width: 50px;
+        max-width: 100px;
     }
     &>Table>thead>tr>th:nth-child(3){
-        width: 50px;
+        max-width: 40px;
     }
     &>Table>thead>tr>th:nth-child(4){
-        width: 50px;
+        max-width: 40px;
     }
     &>Table>thead>tr>th:nth-child(5){
         width: 50px;
     }
     &>Table>thead>tr>th:nth-child(6){
-        width: 50px;
+        max-width: 20px;
+    }
+    &>Table>thead>tr>th:nth-child(7){
+        max-width: 20px;
+    }
+    &>Table>thead>tr>th:nth-child(8){
+        max-width: 90px;
     }
 `
 

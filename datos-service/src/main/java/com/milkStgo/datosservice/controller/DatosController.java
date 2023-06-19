@@ -5,6 +5,8 @@ import com.milkStgo.datosservice.service.DatosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -19,6 +21,12 @@ public class DatosController {
     public ResponseEntity<Datos> save(@RequestBody Datos datos){
         Datos newDatos = datosService.save(datos);
         return ResponseEntity.ok(newDatos);
+    }
+    @PostMapping("/addDatos")
+    public String addDatos(@RequestParam("file") MultipartFile file){
+        datosService.guardar(file);
+        datosService.leerCsv("Datos.csv");
+        return "cargado";
     }
 
     // Read
