@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: proveedor-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: proveedor-service
+  template:
+    metadata:
+      labels:
+        app: proveedor-service
+    spec:
+      containers:
+        - name: proveedor-service
+          image: fernandoper501/pep2_proveedor_service:latest
+          ports:
+            - containerPort: 8082
+          env:
+          - name: SPRING_DATASOURCE_URL
+            value: jdbc:postgresql://postgresql:5432/tingesopep2
+          - name: SPRING_DATASOURCE_USERNAME
+            value: "postgres"
+          - name: SPRING_DATASOURCE_PASSWORD
+            value: "1234"

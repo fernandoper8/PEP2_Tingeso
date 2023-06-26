@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-const ACOPIO_API_URL = "http://localhost:8080/acopio"
-const ACOPIO_SUBIR_API_URL = "http://localhost:8080/acopio/subir"
+const ACOPIO_API_URL = "http://127.0.0.1:59103/acopio"
+const ACOPIO_SUBIR_API_URL = "http://127.0.0.1:59103/acopio/subir"
 
 class AcopioService{
 

@@ -4,9 +4,9 @@ spring:
   cloud:
     config:
       enabled: true
-      uri: http://localhost:8081
+      uri: http://config-service:8081
   datasource:
-    url: jdbc:postgresql://localhost:5432/proveedor-service
+    url: jdbc:postgresql://postgresql:5432/tingesopep2
     username: postgres
     password: 1234
   jpa:

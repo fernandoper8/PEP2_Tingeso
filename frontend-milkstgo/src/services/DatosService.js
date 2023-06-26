@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const DATOS_API_URL = "http://localhost:8080/datos"
+const DATOS_API_URL = "http://127.0.0.1:59103/datos"
 
 class DatosService{
 

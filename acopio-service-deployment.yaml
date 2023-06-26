@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: acopio-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: acopio-service
+  template:
+    metadata:
+      labels:
+        app: acopio-service
+    spec:
+      containers:
+        - name: acopio-service
+          image: fernandoper501/pep2_acopio_service:latest
+          ports:
+            - containerPort: 8083
+          env:
+          - name: SPRING_DATASOURCE_URL
+            value: jdbc:postgresql://postgresql:5432/tingesopep2
+          - name: SPRING_DATASOURCE_USERNAME
+            value: "postgres"
+          - name: SPRING_DATASOURCE_PASSWORD
+            value: "1234"

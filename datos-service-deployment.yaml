@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: datos-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: datos-service
+  template:
+    metadata:
+      labels:
+        app: datos-service
+    spec:
+      containers:
+        - name: datos-service
+          image: fernandoper501/pep2_datos_service:latest
+          ports:
+            - containerPort: 8084
+          env:
+          - name: SPRING_DATASOURCE_URL
+            value: jdbc:postgresql://postgresql:5432/tingesopep2
+          - name: SPRING_DATASOURCE_USERNAME
+            value: "postgres"
+          - name: SPRING_DATASOURCE_PASSWORD
+            value: "1234"

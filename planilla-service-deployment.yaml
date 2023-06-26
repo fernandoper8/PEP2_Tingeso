@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: planilla-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: planilla-service
+  template:
+    metadata:
+      labels:
+        app: planilla-service
+    spec:
+      containers:
+        - name: planilla-service
+          image: fernandoper501/pep2_planilla_service:latest
+          ports:
+            - containerPort: 8085
+          env:
+          - name: SPRING_DATASOURCE_URL
+            value: jdbc:postgresql://postgresql:5432/tingesopep2
+          - name: SPRING_DATASOURCE_USERNAME
+            value: "postgres"
+          - name: SPRING_DATASOURCE_PASSWORD
+            value: "1234"
