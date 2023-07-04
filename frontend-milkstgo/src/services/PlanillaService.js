@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const PLANILLA_API_URL = "http://127.0.0.1:59103/planilla"
+const PLANILLA_API_URL = "http://127.0.0.1:53728/planilla"
 
 class PlanillaService{
 
